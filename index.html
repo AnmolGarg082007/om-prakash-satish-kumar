@@ -1,28 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Om Prakash Satish Kumar (Hansiwale)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: #2e7d32;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Side menu */
+    .sidemenu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #ffffff;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .sidemenu a {
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #333;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sidemenu a:hover {
+      background: #f1f1f1;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Content */
+    .content {
+      padding: 20px;
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: white;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .contact {
+      background: white;
+      padding: 15px;
+      margin-top: 30px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
-<body style="font-family:Arial; text-align:center; padding:30px">
+<body>
 
-  <h1>Om Prakash Satish Kumar (Hansiwale)</h1>
-  <h3>Kirana Store – Hisar, Haryana</h3>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <span class="menu-btn" onclick="openMenu()">☰</span>
+    <span class="title">Om Prakash Satish Kumar (Hansiwale)</span>
+  </div>
 
-  <p>🛒 Atta • Rice • Dal • Oil • Grocery Items</p>
-  <p>🚚 Home Delivery not Available</p>
+  <!-- Side Menu -->
+  <div id="menu" class="sidemenu">
+    <span class="close-btn" onclick="closeMenu()">✖</span>
+    <a href="#dryfruits">Dry Fruits</a>
+    <a href="#pulses">Pulses</a>
+    <a href="#staples">Staples</a>
+  </div>
 
-  <button onclick="order()" style="padding:15px 25px; font-size:18px">
-    📲 Order on WhatsApp
-  </button>
+  <!-- Main Content -->
+  <div class="content">
 
-  <p style="margin-top:30px">
-    📍 Hisar, Haryana <br>
-    ⏰ Open: 8 AM – 9 PM
-  </p>
+    <p><b>📍 Hisar, Haryana</b></p>
+    <p>🛒 Quality grocery & kirana items available</p>
+
+    <!-- Dry Fruits -->
+    <h2 id="dryfruits">🥜 Dry Fruits</h2>
+    <ul>
+      <li>Cashews (Kaju)</li>
+      <li>Almonds (Badam)</li>
+      <li>Pistachio (Pista)</li>
+      <li>Raisins (Kishmish)</li>
+      <li>Walnuts (Akhrot)</li>
+    </ul>
+
+    <!-- Pulses -->
+    <h2 id="pulses">🌾 Pulses</h2>
+    <ul>
+      <li>Toor Dal</li>
+      <li>Moong Dal</li>
+      <li>Masoor Dal</li>
+      <li>Chana Dal</li>
+      <li>Urad Dal</li>
+    </ul>
+
+    <!-- Staples -->
+    <h2 id="staples">🍚 Staples</h2>
+    <ul>
+      <li>Rice (Chawal)</li>
+      <li>Wheat Flour (Atta)</li>
+      <li>Basmati Rice</li>
+      <li>Ghee</li>
+      <li>Cooking Oil</li>
+    </ul>
+
+    <!-- Contact -->
+    <div class="contact">
+      <h3>📞 Contact</h3>
+      <p><b>Anil Kumar</b> – 9813205318</p>
+      <p><b>Parveen Garg</b> – 7015335248</p>
+    </div>
+
+  </div>
 
   <script>
-    function order() {
-      window.open("https://wa.me/917015335248");
+    function openMenu() {
+      document.getElementById("menu").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
     }
   </script>
 
