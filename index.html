@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Om Prakash Satish Kumar (Hansiwale)</title>
+<title>Om Prakash Satish Kumar | Hansiwale</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- MODERN FONT (STEP 1) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+*{box-sizing:border-box}
+
 body{
   margin:0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   background:#f4f4f4;
+  color:#222;
 }
 
-/* HEADER */
+/* HEADER (STEP 2) */
 .header{
-  background:#2e7d32;
+  background:linear-gradient(135deg,#2e7d32,#1b5e20);
   color:#fff;
   padding:16px;
   display:flex;
   align-items:center;
   gap:15px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.2);
 }
 .menu{
   font-size:26px;
@@ -34,7 +41,7 @@ body{
   opacity:0.9;
 }
 
-/* ACTION BUTTONS */
+/* ACTION BUTTONS (STEP 3) */
 .actions{
   display:flex;
   gap:10px;
@@ -44,53 +51,18 @@ body{
 .actions a{
   flex:1;
   text-align:center;
-  padding:12px;
-  border-radius:8px;
+  padding:14px;
+  border-radius:14px;
   font-weight:700;
   text-decoration:none;
+  transition:all 0.2s ease;
 }
-.call{
-  background:#e8f5e9;
-  color:#2e7d32;
+.actions a:active{
+  transform:scale(0.96);
 }
-.whatsapp{
-  background:#25d366;
-  color:#fff;
-}
-.location{
-  background:#f1f1f1;
-  color:#333;
-}
-
-/* SIDE MENU */
-.sidemenu{
-  height:100%;
-  width:0;
-  position:fixed;
-  top:0;
-  left:0;
-  background:#fff;
-  overflow-x:hidden;
-  transition:0.3s;
-  padding-top:60px;
-  box-shadow:2px 0 6px rgba(0,0,0,0.3);
-  z-index:10;
-}
-.sidemenu a{
-  display:block;
-  padding:14px 22px;
-  text-decoration:none;
-  font-weight:600;
-  color:#333;
-  border-bottom:1px solid #eee;
-}
-.close{
-  position:absolute;
-  top:15px;
-  right:20px;
-  font-size:24px;
-  cursor:pointer;
-}
+.call{background:#e8f5e9;color:#2e7d32}
+.whatsapp{background:#25d366;color:#fff}
+.location{background:#f1f1f1;color:#333}
 
 /* SEARCH */
 .search-box{
@@ -101,14 +73,54 @@ body{
   width:100%;
   padding:12px;
   font-size:16px;
-  border-radius:6px;
+  border-radius:10px;
   border:1px solid #ccc;
+}
+
+/* SIDE MENU (STEP 5) */
+.sidemenu{
+  height:100%;
+  width:0;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#fff;
+  overflow-x:hidden;
+  transition:0.3s;
+  padding-top:60px;
+  box-shadow:2px 0 18px rgba(0,0,0,0.3);
+  z-index:10;
+}
+.sidemenu a{
+  display:block;
+  padding:16px 22px;
+  text-decoration:none;
+  font-weight:600;
+  color:#333;
+  border-bottom:1px solid #eee;
+  transition:background 0.2s ease;
+}
+.sidemenu a:hover{
+  background:#e8f5e9;
+}
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:24px;
+  cursor:pointer;
 }
 
 /* CONTENT */
 .container{
   padding:20px;
 }
+h2{
+  margin-top:10px;
+  font-size:18px;
+}
+
+/* PRODUCT GRID (STEP 4) */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -116,10 +128,15 @@ body{
 }
 .card{
   background:#fff;
-  padding:16px;
-  border-radius:8px;
+  padding:18px;
+  border-radius:16px;
   text-align:center;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.18);
 }
 .price{
   font-size:14px;
@@ -132,7 +149,7 @@ body{
   background:#fff;
   padding:20px;
   margin:30px 20px;
-  border-radius:8px;
+  border-radius:16px;
 }
 </style>
 </head>
@@ -160,7 +177,7 @@ body{
   <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
 </div>
 
-<!-- SIDE MENU (CATEGORIES) -->
+<!-- SIDE MENU -->
 <div id="menu" class="sidemenu">
   <span class="close" onclick="closeMenu()">✖</span>
   <a onclick="loadCategory('dry')">Dry Fruits</a>
@@ -173,7 +190,7 @@ body{
 
 <!-- PRODUCTS -->
 <div class="container">
-  <h2 id="categoryTitle">Select a category ☰</h2>
+  <h2 id="categoryTitle">☰ Select a category</h2>
   <div class="grid" id="productGrid"></div>
 </div>
 
@@ -194,19 +211,25 @@ const data={
   household:["Detergent","Dishwash Bar","Floor Cleaner"]
 };
 
-function openMenu(){document.getElementById("menu").style.width="260px";}
-function closeMenu(){document.getElementById("menu").style.width="0";}
-
+function openMenu(){
+  document.getElementById("menu").style.width="260px";
+}
+function closeMenu(){
+  document.getElementById("menu").style.width="0";
+}
 function loadCategory(cat){
   closeMenu();
   document.getElementById("categoryTitle").innerText=cat.toUpperCase();
   let grid=document.getElementById("productGrid");
   grid.innerHTML="";
   data[cat].forEach(item=>{
-    grid.innerHTML+=`<div class="card product"><b>${item}</b><div class="price">Price: /</div></div>`;
+    grid.innerHTML+=`
+      <div class="card product">
+        <b>${item}</b>
+        <div class="price">Price: /</div>
+      </div>`;
   });
 }
-
 function searchProducts(){
   let val=document.getElementById("searchInput").value.toLowerCase();
   document.querySelectorAll(".product").forEach(p=>{
@@ -217,4 +240,3 @@ function searchProducts(){
 
 </body>
 </html>
-
