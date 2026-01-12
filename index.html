@@ -9,11 +9,11 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f2f2f2;
     }
 
-    /* Top bar */
-    .topbar {
+    /* Header */
+    .header {
       background: #2e7d32;
       color: white;
       padding: 15px;
@@ -21,46 +21,41 @@
       align-items: center;
     }
 
-    .menu-btn {
+    .menu {
       font-size: 24px;
       cursor: pointer;
       margin-right: 15px;
     }
 
-    .title {
+    .header-title {
       font-size: 18px;
       font-weight: bold;
     }
 
-    /* Side menu */
+    /* Side Menu */
     .sidemenu {
       height: 100%;
       width: 0;
       position: fixed;
       top: 0;
       left: 0;
-      background: #ffffff;
-      overflow-x: hidden;
+      background: #fff;
       transition: 0.3s;
+      overflow-x: hidden;
       padding-top: 60px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      box-shadow: 2px 0 6px rgba(0,0,0,0.3);
       z-index: 10;
     }
 
     .sidemenu a {
       padding: 12px 20px;
-      text-decoration: none;
-      font-size: 16px;
-      color: #333;
       display: block;
+      text-decoration: none;
+      color: #333;
       border-bottom: 1px solid #eee;
     }
 
-    .sidemenu a:hover {
-      background: #f1f1f1;
-    }
-
-    .close-btn {
+    .close {
       position: absolute;
       top: 15px;
       right: 20px;
@@ -69,30 +64,38 @@
     }
 
     /* Content */
-    .content {
+    .container {
       padding: 20px;
     }
 
     h2 {
-      color: #2e7d32;
       margin-top: 30px;
+      color: #2e7d32;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
     }
 
-    li {
+    .card {
       background: white;
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 6px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card b {
+      display: block;
+      margin-bottom: 8px;
     }
 
     .price {
       color: #555;
-      margin-top: 5px;
       font-size: 14px;
     }
 
@@ -100,127 +103,82 @@
       background: white;
       padding: 15px;
       margin-top: 30px;
-      border-radius: 6px;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="topbar">
-    <span class="menu-btn" onclick="openMenu()">☰</span>
-    <span class="title">Om Prakash Satish Kumar (Hansiwale)</span>
+<!-- Header -->
+<div class="header">
+  <span class="menu" onclick="openMenu()">☰</span>
+  <span class="header-title">Om Prakash Satish Kumar (Hansiwale)</span>
+</div>
+
+<!-- Side Menu -->
+<div id="menu" class="sidemenu">
+  <span class="close" onclick="closeMenu()">✖</span>
+  <a href="#dry" onclick="closeMenu()">Dry Fruits</a>
+  <a href="#pulses" onclick="closeMenu()">Pulses</a>
+  <a href="#staples" onclick="closeMenu()">Staples</a>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+  <p><b>📍 Hisar, Haryana</b></p>
+  <p>Online Kirana Store • Quality Products</p>
+
+  <!-- Dry Fruits -->
+  <h2 id="dry">🥜 Dry Fruits</h2>
+  <div class="grid">
+    <div class="card"><b>Cashews (Kaju)</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Almonds (Badam)</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Pistachio (Pista)</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Raisins (Kishmish)</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Walnuts (Akhrot)</b><div class="price">Price: /</div></div>
   </div>
 
-  <!-- Side Menu -->
-  <div id="menu" class="sidemenu">
-    <span class="close-btn" onclick="closeMenu()">✖</span>
-    <a href="#dryfruits" onclick="closeMenu()">Dry Fruits</a>
-    <a href="#pulses" onclick="closeMenu()">Pulses</a>
-    <a href="#staples" onclick="closeMenu()">Staples</a>
+  <!-- Pulses -->
+  <h2 id="pulses">🌾 Pulses</h2>
+  <div class="grid">
+    <div class="card"><b>Toor Dal</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Moong Dal</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Masoor Dal</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Chana Dal</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Urad Dal</b><div class="price">Price: /</div></div>
   </div>
 
-  <!-- Main Content -->
-  <div class="content">
-
-    <p><b>📍 Hisar, Haryana</b></p>
-    <p>🛒 Quality grocery & kirana items available</p>
-
-    <!-- Dry Fruits -->
-    <h2 id="dryfruits">🥜 Dry Fruits</h2>
-    <ul>
-      <li>
-        <b>Cashews (Kaju)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Almonds (Badam)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Pistachio (Pista)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Raisins (Kishmish)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Walnuts (Akhrot)</b>
-        <div class="price">Price: /</div>
-      </li>
-    </ul>
-
-    <!-- Pulses -->
-    <h2 id="pulses">🌾 Pulses</h2>
-    <ul>
-      <li>
-        <b>Toor Dal</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Moong Dal</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Masoor Dal</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Chana Dal</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Urad Dal</b>
-        <div class="price">Price: /</div>
-      </li>
-    </ul>
-
-    <!-- Staples -->
-    <h2 id="staples">🍚 Staples</h2>
-    <ul>
-      <li>
-        <b>Rice (Chawal)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Wheat Flour (Atta)</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Basmati Rice</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Ghee</b>
-        <div class="price">Price: /</div>
-      </li>
-      <li>
-        <b>Cooking Oil</b>
-        <div class="price">Price: /</div>
-      </li>
-    </ul>
-
-    <!-- Contact -->
-    <div class="contact">
-      <h3>📞 Contact</h3>
-      <p><b>Anil Kumar</b> – 9813205318</p>
-      <p><b>Parveen Garg</b> – 7015335248</p>
-    </div>
-
+  <!-- Staples -->
+  <h2 id="staples">🍚 Staples</h2>
+  <div class="grid">
+    <div class="card"><b>Rice</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Atta</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Basmati Rice</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Ghee</b><div class="price">Price: /</div></div>
+    <div class="card"><b>Cooking Oil</b><div class="price">Price: /</div></div>
   </div>
 
-  <script>
-    function openMenu() {
-      document.getElementById("menu").style.width = "250px";
-    }
+  <!-- Contact -->
+  <div class="contact">
+    <h3>📞 Contact</h3>
+    <p><b>Anil Kumar</b> – 9813205318</p>
+    <p><b>Parveen Garg</b> – 7015335248</p>
+  </div>
 
-    function closeMenu() {
-      document.getElementById("menu").style.width = "0";
-    }
-  </script>
+</div>
+
+<script>
+  function openMenu() {
+    document.getElementById("menu").style.width = "250px";
+  }
+  function closeMenu() {
+    document.getElementById("menu").style.width = "0";
+  }
+</script>
 
 </body>
 </html>
+
 
   
