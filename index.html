@@ -15,20 +15,25 @@ body{margin:0;font-family:Arial;background:#f5f6f8}
 .card{min-width:160px;background:#fff;padding:14px;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.12);text-align:center}
 .price{margin-top:6px;color:#ff5722;font-weight:bold}
 
-/* MODAL */
+/* LOGIN MODAL */
 .modal{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,.6);
   display:none;align-items:center;justify-content:center;
-  z-index:100;
+  z-index:999;
 }
 .box{
   background:#fff;padding:20px;border-radius:12px;
   width:90%;max-width:360px;
 }
-input,button{width:100%;padding:12px;margin:6px 0}
-button{background:#2e7d32;color:#fff;border:none;border-radius:6px;font-weight:bold}
-.close{float:right;cursor:pointer}
+input,button{
+  width:100%;padding:12px;margin:6px 0;
+}
+button{
+  background:#2e7d32;color:#fff;border:none;
+  border-radius:6px;font-weight:bold;
+}
+.close{float:right;cursor:pointer;font-size:18px}
 </style>
 </head>
 
@@ -38,7 +43,7 @@ button{background:#2e7d32;color:#fff;border:none;border-radius:6px;font-weight:b
 
 <div class="banner">
   <h2>Daily Needs • Best Local Prices</h2>
-  <p>Pure kiryana items – trusted shop</p>
+  <p>Trusted kiryana store</p>
 </div>
 
 <!-- COUPON -->
@@ -72,7 +77,7 @@ button{background:#2e7d32;color:#fff;border:none;border-radius:6px;font-weight:b
 <div class="card">Biscuits<div class="price">₹ /</div></div>
 <div class="card">Cream Biscuits<div class="price">₹ /</div></div>
 <div class="card">Bhujia<div class="price">₹ /</div></div>
-<div classe="card">Namkeen Mix<div class="price">₹ /</div></div>
+<div class="card">Namkeen Mix<div class="price">₹ /</div></div>
 <div class="card">Chips<div class="price">₹ /</div></div>
 <div class="card">Papad<div class="price">₹ /</div></div>
 <div class="card">Toast<div class="price">₹ /</div></div>
@@ -98,19 +103,25 @@ button{background:#2e7d32;color:#fff;border:none;border-radius:6px;font-weight:b
   <div class="box">
     <span class="close" id="closeLogin">✖</span>
     <h3>Login to Unlock Coupon</h3>
+
     <input id="phone" placeholder="+91XXXXXXXXXX">
     <div id="recaptcha-container"></div>
+
     <button id="sendOtp">Send OTP</button>
+
     <input id="otp" placeholder="Enter OTP">
     <button id="verifyOtp">Verify OTP</button>
   </div>
 </div>
 
-<!-- FIREBASE LOGIC -->
+<!-- FIREBASE OTP (INVISIBLE reCAPTCHA) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } 
-from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC9O4N_SSuYO2aSh41CF9YwOKb_sPGYG9s",
@@ -124,16 +135,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-/* DOM READY FIX */
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded",()=>{
 
   const modal = document.getElementById("loginModal");
 
   document.getElementById("couponBtn").onclick = ()=>{
     modal.style.display="flex";
+
     if(!window.recaptchaVerifier){
       window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,"recaptcha-container",{size:"normal"}
+        auth,
+        "recaptcha-container",
+        {
+          size:"invisible",
+          callback:()=>console.log("reCAPTCHA verified")
+        }
       );
     }
   };
@@ -161,4 +177,3 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
 </body>
 </html>
-
