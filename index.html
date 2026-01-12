@@ -5,9 +5,14 @@
 <title>Om Prakash Satish Kumar | Hansiwale</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- =========================================================
+  GLOBAL STYLES & RESET
+========================================================= -->
 <style>
 
-/* ================== BASIC RESET ================== */
+/* =========================================================
+  01. BASIC RESET
+========================================================= */
 *{
   margin:0;
   padding:0;
@@ -15,12 +20,18 @@
   font-family:Arial, Helvetica, sans-serif;
 }
 
+/* =========================================================
+  02. BODY
+========================================================= */
 body{
   background:#f6f6f6;
   color:#222;
+  line-height:1.4;
 }
 
-/* ================== TOP HEADER ================== */
+/* =========================================================
+  03. HEADER / TOP BAR
+========================================================= */
 header{
   background:#ffffff;
   padding:14px 20px;
@@ -33,16 +44,17 @@ header{
   z-index:100;
 }
 
+/* LOGO */
 .logo{
   font-size:20px;
   font-weight:bold;
   color:#1b5e20;
 }
 
+/* SEARCH BOX */
 .search-box{
   width:45%;
 }
-
 .search-box input{
   width:100%;
   padding:10px 14px;
@@ -51,7 +63,9 @@ header{
   font-size:14px;
 }
 
-/* ================== DELIVERY STRIP ================== */
+/* =========================================================
+  04. DELIVERY STRIP (TOP)
+========================================================= */
 .delivery-strip{
   background:#e8f5e9;
   color:#1b5e20;
@@ -60,7 +74,9 @@ header{
   font-weight:bold;
 }
 
-/* ================== BANNER ================== */
+/* =========================================================
+  05. BANNER / HERO
+========================================================= */
 .banner{
   margin:20px;
   padding:30px;
@@ -68,80 +84,69 @@ header{
   background:linear-gradient(120deg,#ff9800,#ff5722);
   color:white;
 }
-
 .banner h1{
   font-size:26px;
   margin-bottom:10px;
 }
-
 .banner p{
   font-size:14px;
 }
 
-/* ================== COUPON ================== */
-.coupon{
-  background:#fff3e0;
-  margin:20px;
-  padding:14px;
-  border-radius:10px;
-  font-weight:bold;
-  color:#e65100;
-  cursor:pointer;
-}
-
-/* ================== LAYOUT ================== */
+/* =========================================================
+  06. MAIN LAYOUT CONTAINER
+========================================================= */
 .container{
   display:flex;
   gap:20px;
   padding:20px;
 }
 
-/* ================== SIDEBAR ================== */
+/* =========================================================
+  07. SIDEBAR (CATEGORIES)
+========================================================= */
 .sidebar{
   width:240px;
   background:white;
   border-radius:14px;
   padding:20px;
-  height:fit-content;
 }
-
 .sidebar h3{
   margin-bottom:12px;
   color:#1b5e20;
 }
-
 .sidebar ul{
   list-style:none;
 }
-
 .sidebar li{
   padding:10px 0;
   border-bottom:1px solid #eee;
   cursor:pointer;
 }
-
 .sidebar li:hover{
   color:#1b5e20;
   font-weight:bold;
 }
 
-/* ================== PRODUCTS AREA ================== */
+/* =========================================================
+  08. PRODUCTS AREA
+========================================================= */
 .products{
   flex:1;
 }
-
 .products h2{
   margin-bottom:16px;
 }
 
-/* GRID LIKE MODERN BAZAAR */
+/* GRID */
 .product-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
   gap:20px;
 }
 
-/* ================== PRODUCT CARD ================== */
+/* =========================================================
+  09. PRODUCT CARD
+========================================================= */
 .product-card{
   background:white;
   border-radius:14px;
@@ -150,37 +155,71 @@ header{
   text-align:center;
 }
 
+/* IMAGE BOX */
 .product-img{
-  height:120px;
-  background:#eeeeee;
+  height:130px;
+  background:#f0f0f0;
   border-radius:10px;
   margin-bottom:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#777;
-  font-size:12px;
 }
 
+/* IMAGE ITSELF */
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+/* NAME */
 .product-name{
   font-size:14px;
   font-weight:bold;
   margin-bottom:6px;
 }
 
+/* PRICE */
 .product-price{
   color:#e65100;
   font-weight:bold;
-  margin-bottom:10px;
 }
 
-/* ================== WHATSAPP BUTTON ================== */
+/* =========================================================
+  10. DELIVERY CHARGES (BOTTOM)
+========================================================= */
+.delivery-charges{
+  margin:20px;
+  padding:14px;
+  background:#fff;
+  border-radius:12px;
+  font-size:14px;
+}
+
+/* =========================================================
+  11. FOOTER
+========================================================= */
+footer{
+  background:#1b5e20;
+  color:white;
+  padding:20px;
+  margin-top:30px;
+}
+footer p{
+  margin:6px 0;
+  font-size:14px;
+}
+
+/* =========================================================
+  12. WHATSAPP FLOATING BUTTON
+========================================================= */
 .whatsapp-box{
   position:fixed;
   bottom:20px;
   right:20px;
 }
-
 .whatsapp-main{
   background:#25d366;
   color:white;
@@ -190,26 +229,19 @@ header{
   font-weight:bold;
 }
 
-/* ================== DELIVERY CHARGES ================== */
-.delivery-charges{
-  margin:20px;
-  padding:14px;
-  background:#fff;
-  border-radius:12px;
-  font-size:14px;
-}
-
-/* ================== FOOTER ================== */
-footer{
-  background:#1b5e20;
-  color:white;
-  padding:20px;
-  margin-top:30px;
-}
-
-footer p{
-  margin:6px 0;
-  font-size:14px;
+/* =========================================================
+  13. RESPONSIVE (BASIC)
+========================================================= */
+@media(max-width:900px){
+  .container{
+    flex-direction:column;
+  }
+  .sidebar{
+    width:100%;
+  }
+  .search-box{
+    width:55%;
+  }
 }
 
 </style>
@@ -217,72 +249,58 @@ footer p{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =========================================================
+  HEADER
+========================================================= -->
 <header>
   <div class="logo">Om Prakash Satish Kumar (Hansiwale)</div>
   <div class="search-box">
-    <input type="text" placeholder="Search products like Atta, Rice, Dal...">
+    <input type="text" placeholder="Search products like Atta, Rice, Harpic...">
   </div>
 </header>
 
-<!-- ================= DELIVERY TEXT ================= -->
+<!-- =========================================================
+  DELIVERY STRIP
+========================================================= -->
 <div class="delivery-strip">
   🚚 Delivery at Home also Available
 </div>
 
-<!-- ================= BANNER ================= -->
+<!-- =========================================================
+  BANNER
+========================================================= -->
 <div class="banner">
   <h1>Daily Needs • Best Local Prices</h1>
-  <p>Trusted Kirana Store • Fresh • Genuine Products</p>
+  <p>Trusted Kirana Store • Hisar</p>
 </div>
 
-<!-- ================= COUPON ================= -->
-<div class="coupon">
-  🎉 FIRST ORDER OFFER – Get 10% OFF (Login Required)
-</div>
-
-<!-- ================= MAIN CONTAINER ================= -->
+<!-- =========================================================
+  MAIN CONTENT
+========================================================= -->
 <div class="container">
 
-  <!-- ===== SIDEBAR ===== -->
+  <!-- ================= SIDEBAR ================= -->
   <div class="sidebar">
     <h3>Shop by Categories</h3>
     <ul>
+      <li onclick="showCategory('household')">Household Items</li>
       <li onclick="showCategory('vegetables')">Fruits & Vegetables</li>
       <li onclick="showCategory('kirana')">Daily Essentials</li>
-      <li onclick="showCategory('snacks')">Snacks & Namkeen</li>
-      <li onclick="showCategory('household')">Household Items</li>
     </ul>
   </div>
 
-  <!-- ===== PRODUCTS ===== -->
+  <!-- ================= PRODUCTS ================= -->
   <div class="products">
-    <h2 id="categoryTitle">Fruits & Vegetables</h2>
+    <h2 id="categoryTitle">Household Items</h2>
 
     <div class="product-grid" id="productGrid">
 
-      <!-- PRODUCT -->
+      <!-- DEFAULT: HARPIC -->
       <div class="product-card">
-        <div class="product-img">Image</div>
-        <div class="product-name">Tomato</div>
-        <div class="product-price">₹ —</div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-img">Image</div>
-        <div class="product-name">Onion</div>
-        <div class="product-price">₹ —</div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-img">Image</div>
-        <div class="product-name">Potato</div>
-        <div class="product-price">₹ —</div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-img">Image</div>
-        <div class="product-name">Carrot</div>
+        <div class="product-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Harpic_toilet_cleaner_bottle.jpg">
+        </div>
+        <div class="product-name">Harpic Toilet Cleaner</div>
         <div class="product-price">₹ —</div>
       </div>
 
@@ -291,74 +309,102 @@ footer p{
 
 </div>
 
-<!-- ================= DELIVERY CHARGES ================= -->
+<!-- =========================================================
+  DELIVERY CHARGES (BOTTOM)
+========================================================= -->
 <div class="delivery-charges">
-  📍 Delivery Charges depend on distance (will be confirmed on WhatsApp)
+  📍 Delivery charges depend on distance and will be confirmed on WhatsApp
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================================================
+  FOOTER
+========================================================= -->
 <footer>
-  <p>📞 Anil Kumar: 9813205318</p>
-  <p>📞 Parveen Garg: 7015335248</p>
+  <p>📞 Anil Kumar – 9813205318</p>
+  <p>📞 Parveen Garg – 7015335248</p>
   <p>📍 Hisar, Haryana</p>
 </footer>
 
-<!-- ================= WHATSAPP ================= -->
+<!-- =========================================================
+  WHATSAPP FLOAT
+========================================================= -->
 <div class="whatsapp-box">
-  <div class="whatsapp-main" onclick="openWhatsApp()">
-    WhatsApp Order
-  </div>
+  <div class="whatsapp-main" onclick="openWhatsApp()">WhatsApp Order</div>
 </div>
 
+<!-- =========================================================
+  JAVASCRIPT
+========================================================= -->
 <script>
 
-/* ================= CATEGORY SWITCH ================= */
+/* =========================================================
+  CATEGORY SWITCH
+========================================================= */
 function showCategory(cat){
   const title=document.getElementById("categoryTitle");
   const grid=document.getElementById("productGrid");
-
   grid.innerHTML="";
+
+  if(cat==="household"){
+    title.innerText="Household Items";
+    addProduct(
+      "Harpic Toilet Cleaner",
+      "https://upload.wikimedia.org/wikipedia/commons/3/36/Harpic_toilet_cleaner_bottle.jpg"
+    );
+    addProduct(
+      "Dettol Disinfectant",
+      "https://upload.wikimedia.org/wikipedia/commons/5/59/Dettol_antiseptic_liquid.jpg"
+    );
+  }
 
   if(cat==="vegetables"){
     title.innerText="Fruits & Vegetables";
-    addProducts(["Tomato","Onion","Potato","Carrot","Capsicum","Beans"]);
+    addProduct(
+      "Tomato",
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg"
+    );
+    addProduct(
+      "Onion",
+      "https://upload.wikimedia.org/wikipedia/commons/1/1b/Onions.jpg"
+    );
   }
 
   if(cat==="kirana"){
     title.innerText="Daily Essentials";
-    addProducts(["Wheat Atta","Rice","Toor Dal","Moong Dal","Sugar","Salt"]);
-  }
-
-  if(cat==="snacks"){
-    title.innerText="Snacks & Namkeen";
-    addProducts(["Biscuits","Bhujia","Namkeen Mix","Chips","Papad"]);
-  }
-
-  if(cat==="household"){
-    title.innerText="Household Items";
-    addProducts(["Detergent","Bath Soap","Dishwash Bar","Phenyl","Floor Cleaner"]);
+    addProduct(
+      "Wheat Atta",
+      "https://upload.wikimedia.org/wikipedia/commons/6/6f/Wheat_flour.jpg"
+    );
+    addProduct(
+      "Basmati Rice",
+      "https://upload.wikimedia.org/wikipedia/commons/7/74/Basmati_rice.jpg"
+    );
   }
 }
 
-/* ================= ADD PRODUCTS ================= */
-function addProducts(items){
+/* =========================================================
+  ADD PRODUCT CARD
+========================================================= */
+function addProduct(name,img){
   const grid=document.getElementById("productGrid");
-  items.forEach(item=>{
-    const card=document.createElement("div");
-    card.className="product-card";
-    card.innerHTML=`
-      <div class="product-img">Image</div>
-      <div class="product-name">${item}</div>
-      <div class="product-price">₹ —</div>
-    `;
-    grid.appendChild(card);
-  });
+  const card=document.createElement("div");
+  card.className="product-card";
+  card.innerHTML=`
+    <div class="product-img">
+      <img src="${img}">
+    </div>
+    <div class="product-name">${name}</div>
+    <div class="product-price">₹ —</div>
+  `;
+  grid.appendChild(card);
 }
 
-/* ================= WHATSAPP ================= */
+/* =========================================================
+  WHATSAPP CHOICE
+========================================================= */
 function openWhatsApp(){
-  const choice=confirm("OK = Anil Kumar\nCancel = Parveen Garg");
-  if(choice){
+  const c=confirm("OK = Anil Kumar\nCancel = Parveen Garg");
+  if(c){
     window.open("https://wa.me/919813205318");
   }else{
     window.open("https://wa.me/917015335248");
@@ -369,4 +415,3 @@ function openWhatsApp(){
 
 </body>
 </html>
-
