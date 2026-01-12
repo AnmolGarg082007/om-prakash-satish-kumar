@@ -2,213 +2,142 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Om Prakash Satish Kumar | Hansiwale</title>
+<title>Hansiwale Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#f5f6f8;
-  color:#222;
-}
-
-/* HEADER */
-.header{
-  background:linear-gradient(135deg,#2e7d32,#1b5e20);
-  color:#fff;
-  padding:16px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-.menu{font-size:26px;cursor:pointer}
-.title{font-size:22px;font-weight:800}
-.subtitle{font-size:13px;opacity:.9}
-
-/* ACTIONS */
-.actions{
-  display:flex;
-  gap:10px;
-  padding:12px;
-  background:#fff;
-}
-.actions a{
-  flex:1;
-  padding:14px;
-  text-align:center;
-  border-radius:14px;
-  font-weight:700;
-  text-decoration:none;
-}
-.call{background:#e8f5e9;color:#2e7d32}
-.whatsapp{background:#25d366;color:#fff}
-.location{background:#f1f1f1;color:#333}
-
-/* SEARCH */
-.search-box{
-  padding:12px;
-  background:#fff;
-}
-.search-box input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #ccc;
-}
-
-/* BANNER */
-.banner{
-  margin:14px;
-  padding:28px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#ff9800,#ff5722);
-  color:#fff;
-}
-.banner h2{margin:0;font-size:24px}
-.banner p{margin-top:8px;font-size:15px}
-
-/* COUPON */
-.coupon{
-  margin:14px;
-  padding:18px;
-  background:#fff3cd;
-  border-radius:16px;
-  font-weight:700;
-  color:#856404;
-}
-
-/* SECTIONS */
+body{margin:0;font-family:Arial;background:#f5f6f8}
+.hidden{display:none}
+.header{background:#2e7d32;color:#fff;padding:16px;font-size:22px;font-weight:bold}
+.banner{margin:14px;padding:26px;border-radius:18px;background:linear-gradient(135deg,#ff9800,#ff5722);color:#fff}
 .section{margin:20px}
 .section h2{margin-bottom:12px}
-.row{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-}
-.card{
-  min-width:160px;
-  background:#fff;
-  padding:14px;
-  border-radius:16px;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
-  text-align:center;
-}
-.price{margin-top:6px;color:#ff5722;font-weight:700}
-
-/* SIDE MENU */
-.sidemenu{
-  position:fixed;
-  top:0;left:0;
-  height:100%;
-  width:0;
-  background:#fff;
-  overflow:hidden;
-  transition:.3s;
-  padding-top:60px;
-  box-shadow:2px 0 18px rgba(0,0,0,.3);
-  z-index:10;
-}
-.sidemenu a{
-  display:block;
-  padding:16px 22px;
-  font-weight:600;
-  border-bottom:1px solid #eee;
-}
-.close{position:absolute;top:15px;right:20px;font-size:24px}
+.row{display:flex;gap:12px;overflow-x:auto}
+.card{min-width:160px;background:#fff;padding:14px;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.12);text-align:center}
+.price{margin-top:6px;color:#ff5722;font-weight:bold}
+.box{background:#fff;padding:20px;border-radius:12px;max-width:400px;margin:20px auto}
+input,button{width:100%;padding:12px;margin:6px 0}
+button{background:#2e7d32;color:#fff;border:none;border-radius:6px;font-weight:bold}
+#coupon{background:#ffecb3;padding:15px;border-radius:10px;margin-top:20px}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <span class="menu" onclick="openMenu()">☰</span>
-  <div>
-    <div class="title">Om Prakash Satish Kumar</div>
-    <div class="subtitle">(Hansiwale) • Hisar, Haryana</div>
-  </div>
+<div class="header">Om Prakash Satish Kumar (Hansiwale)</div>
+
+<!-- LOGIN -->
+<div id="loginBox" class="box">
+  <h2>Login / Signup</h2>
+  <input id="phone" placeholder="+91XXXXXXXXXX">
+  <div id="recaptcha-container"></div>
+  <button id="sendOtp">Send OTP</button>
+  <input id="otp" placeholder="Enter OTP">
+  <button id="verifyOtp">Verify OTP</button>
 </div>
 
-<div class="actions">
-  <a class="call" href="tel:9813205318">📞 Call</a>
-  <a class="whatsapp" onclick="openWA()">💬 WhatsApp</a>
-  <a class="location" href="https://maps.google.com/?q=Hisar,Haryana">📍 Location</a>
-</div>
+<!-- HOME -->
+<div id="homeBox" class="hidden">
 
-<div class="search-box">
-  <input type="text" placeholder="Search products...">
-</div>
-
-<!-- BANNER -->
 <div class="banner">
-  <h2>Daily Needs • Fresh & Trusted</h2>
-  <p>Best kiryana items at local prices</p>
+  <h2>Daily Needs • Best Local Prices</h2>
+  <p>Quality kiryana items available</p>
 </div>
 
-<!-- COUPON -->
-<div class="coupon">
-  🎁 First Order Offer – Get <b>10% OFF</b>  
-  <br>Use Code: <b>FIRST10</b>
-</div>
-
-<!-- SECTIONS -->
-<div class="section">
-  <h2>Daily Essentials</h2>
-  <div class="row">
-    <div class="card">Wheat Atta<div class="price">₹ /</div></div>
-    <div class="card">Rice<div class="price">₹ /</div></div>
-    <div class="card">Basmati Rice<div class="price">₹ /</div></div>
-    <div class="card">Toor Dal<div class="price">₹ /</div></div>
-    <div class="card">Moong Dal<div class="price">₹ /</div></div>
-    <div class="card">Sugar<div class="price">₹ /</div></div>
-    <div class="card">Salt<div class="price">₹ /</div></div>
-  </div>
+<div id="coupon">
+ 🎁 <b>FIRST10</b> – Get <b>10% OFF</b> on first order
 </div>
 
 <div class="section">
-  <h2>Snacks & Namkeen</h2>
-  <div class="row">
-    <div class="card">Biscuits<div class="price">₹ /</div></div>
-    <div class="card">Namkeen<div class="price">₹ /</div></div>
-    <div class="card">Chips<div class="price">₹ /</div></div>
-    <div class="card">Toast<div class="price">₹ /</div></div>
-  </div>
+<h2>Daily Essentials</h2>
+<div class="row">
+<div class="card">Atta<div class="price">₹ /</div></div>
+<div class="card">Rice<div class="price">₹ /</div></div>
+<div class="card">Dal<div class="price">₹ /</div></div>
+<div class="card">Oil<div class="price">₹ /</div></div>
+<div class="card">Sugar<div class="price">₹ /</div></div>
+<div class="card">Salt<div class="price">₹ /</div></div>
+</div>
 </div>
 
 <div class="section">
-  <h2>Household</h2>
-  <div class="row">
-    <div class="card">Detergent<div class="price">₹ /</div></div>
-    <div class="card">Soap<div class="price">₹ /</div></div>
-    <div class="card">Phenyl<div class="price">₹ /</div></div>
-    <div class="card">Cleaner<div class="price">₹ /</div></div>
-  </div>
+<h2>Snacks</h2>
+<div class="row">
+<div class="card">Biscuits<div class="price">₹ /</div></div>
+<div class="card">Namkeen<div class="price">₹ /</div></div>
+<div class="card">Chips<div class="price">₹ /</div></div>
+<div class="card">Rusk<div class="price">₹ /</div></div>
+</div>
 </div>
 
-<!-- SIDE MENU -->
-<div id="menu" class="sidemenu">
-  <span class="close" onclick="closeMenu()">✖</span>
-  <a>Daily Essentials</a>
-  <a>Snacks</a>
-  <a>Household</a>
+<div class="section">
+<h2>Household</h2>
+<div class="row">
+<div class="card">Detergent<div class="price">₹ /</div></div>
+<div class="card">Soap<div class="price">₹ /</div></div>
+<div class="card">Phenyl<div class="price">₹ /</div></div>
+</div>
 </div>
 
-<!-- WHATSAPP SHEET -->
-<div id="waSheet" style="position:fixed;bottom:-100%;left:0;width:100%;background:#fff;padding:20px;border-radius:20px 20px 0 0;transition:.3s">
-  <a href="https://wa.me/919813205318" style="display:block;background:#25d366;color:#fff;padding:14px;border-radius:12px;margin-bottom:10px;text-align:center">WhatsApp Anil Kumar</a>
-  <a href="https://wa.me/917015335248" style="display:block;background:#25d366;color:#fff;padding:14px;border-radius:12px;margin-bottom:10px;text-align:center">WhatsApp Parveen Garg</a>
-  <button onclick="closeWA()" style="width:100%;padding:12px">Cancel</button>
+<button id="logout">Logout</button>
 </div>
 
-<script>
-function openMenu(){menu.style.width="260px"}
-function closeMenu(){menu.style.width="0"}
-function openWA(){waSheet.style.bottom="0"}
-function closeWA(){waSheet.style.bottom="-100%"}
+<!-- 🔥 FIREBASE OTP + USER ACCOUNT -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC9O4N_SSuYO2aSh41CF9YwOKb_sPGYG9s",
+  authDomain: "om-prakash-satish-kumar.firebaseapp.com",
+  projectId: "om-prakash-satish-kumar",
+  storageBucket: "om-prakash-satish-kumar.firebasestorage.app",
+  messagingSenderId: "734937154406",
+  appId: "1:734937154406:web:31d5b763dd093f640c3ea7"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const loginBox = document.getElementById("loginBox");
+const homeBox = document.getElementById("homeBox");
+
+window.recaptchaVerifier = new RecaptchaVerifier(
+  auth,
+  "recaptcha-container",
+  { size:"normal" }
+);
+
+document.getElementById("sendOtp").onclick = async ()=>{
+  const phone=document.getElementById("phone").value;
+  window.confirmationResult = await signInWithPhoneNumber(auth,phone,window.recaptchaVerifier);
+  alert("OTP Sent");
+};
+
+document.getElementById("verifyOtp").onclick = async ()=>{
+  const code=document.getElementById("otp").value;
+  await window.confirmationResult.confirm(code);
+};
+
+onAuthStateChanged(auth,user=>{
+  if(user){
+    loginBox.classList.add("hidden");
+    homeBox.classList.remove("hidden");
+  }else{
+    homeBox.classList.add("hidden");
+    loginBox.classList.remove("hidden");
+  }
+});
+
+document.getElementById("logout").onclick=()=>signOut(auth);
 </script>
 
 </body>
 </html>
+
