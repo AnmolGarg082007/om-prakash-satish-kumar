@@ -43,7 +43,6 @@ body{
   border-radius:14px;
   font-weight:700;
   text-decoration:none;
-  cursor:pointer;
 }
 .call{background:#e8f5e9;color:#2e7d32}
 .whatsapp{background:#25d366;color:#fff}
@@ -60,6 +59,45 @@ body{
   border-radius:12px;
   border:1px solid #ccc;
 }
+
+/* BANNER */
+.banner{
+  margin:14px;
+  padding:28px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#ff9800,#ff5722);
+  color:#fff;
+}
+.banner h2{margin:0;font-size:24px}
+.banner p{margin-top:8px;font-size:15px}
+
+/* COUPON */
+.coupon{
+  margin:14px;
+  padding:18px;
+  background:#fff3cd;
+  border-radius:16px;
+  font-weight:700;
+  color:#856404;
+}
+
+/* SECTIONS */
+.section{margin:20px}
+.section h2{margin-bottom:12px}
+.row{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+}
+.card{
+  min-width:160px;
+  background:#fff;
+  padding:14px;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  text-align:center;
+}
+.price{margin-top:6px;color:#ff5722;font-weight:700}
 
 /* SIDE MENU */
 .sidemenu{
@@ -79,83 +117,13 @@ body{
   padding:16px 22px;
   font-weight:600;
   border-bottom:1px solid #eee;
-  cursor:pointer;
 }
-.close{
-  position:absolute;
-  top:15px;right:20px;
-  font-size:24px;
-  cursor:pointer;
-}
-
-/* SECTIONS */
-.section{
-  margin:20px;
-}
-.section h2{
-  margin-bottom:12px;
-}
-.row{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-}
-.card{
-  min-width:160px;
-  background:#fff;
-  padding:14px;
-  border-radius:16px;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
-  text-align:center;
-}
-.price{
-  margin-top:6px;
-  color:#ff5722;
-  font-weight:700;
-}
-
-/* CATEGORY VIEW */
-#categoryView{margin:20px}
-.hidden{display:none}
-
-/* WHATSAPP SHEET */
-#waSheet{
-  position:fixed;
-  bottom:-100%;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-radius:20px 20px 0 0;
-  box-shadow:0 -10px 30px rgba(0,0,0,.3);
-  padding:20px;
-  transition:.3s;
-  z-index:20;
-}
-#waSheet a{
-  display:block;
-  padding:14px;
-  margin-bottom:10px;
-  background:#25d366;
-  color:#fff;
-  text-align:center;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-}
-#waSheet button{
-  width:100%;
-  padding:12px;
-  border:none;
-  background:#eee;
-  border-radius:12px;
-  font-weight:600;
-}
+.close{position:absolute;top:15px;right:20px;font-size:24px}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <span class="menu" onclick="openMenu()">☰</span>
   <div>
@@ -164,99 +132,82 @@ body{
   </div>
 </div>
 
-<!-- ACTIONS -->
 <div class="actions">
   <a class="call" href="tel:9813205318">📞 Call</a>
   <a class="whatsapp" onclick="openWA()">💬 WhatsApp</a>
   <a class="location" href="https://maps.google.com/?q=Hisar,Haryana">📍 Location</a>
 </div>
 
-<!-- SEARCH -->
 <div class="search-box">
   <input type="text" placeholder="Search products...">
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+  <h2>Daily Needs • Fresh & Trusted</h2>
+  <p>Best kiryana items at local prices</p>
+</div>
+
+<!-- COUPON -->
+<div class="coupon">
+  🎁 First Order Offer – Get <b>10% OFF</b>  
+  <br>Use Code: <b>FIRST10</b>
+</div>
+
+<!-- SECTIONS -->
+<div class="section">
+  <h2>Daily Essentials</h2>
+  <div class="row">
+    <div class="card">Wheat Atta<div class="price">₹ /</div></div>
+    <div class="card">Rice<div class="price">₹ /</div></div>
+    <div class="card">Basmati Rice<div class="price">₹ /</div></div>
+    <div class="card">Toor Dal<div class="price">₹ /</div></div>
+    <div class="card">Moong Dal<div class="price">₹ /</div></div>
+    <div class="card">Sugar<div class="price">₹ /</div></div>
+    <div class="card">Salt<div class="price">₹ /</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Snacks & Namkeen</h2>
+  <div class="row">
+    <div class="card">Biscuits<div class="price">₹ /</div></div>
+    <div class="card">Namkeen<div class="price">₹ /</div></div>
+    <div class="card">Chips<div class="price">₹ /</div></div>
+    <div class="card">Toast<div class="price">₹ /</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Household</h2>
+  <div class="row">
+    <div class="card">Detergent<div class="price">₹ /</div></div>
+    <div class="card">Soap<div class="price">₹ /</div></div>
+    <div class="card">Phenyl<div class="price">₹ /</div></div>
+    <div class="card">Cleaner<div class="price">₹ /</div></div>
+  </div>
 </div>
 
 <!-- SIDE MENU -->
 <div id="menu" class="sidemenu">
   <span class="close" onclick="closeMenu()">✖</span>
-  <a onclick="showCategory('daily')">Daily Essentials</a>
-  <a onclick="showCategory('grains')">Grains & Staples</a>
-  <a onclick="showCategory('snacks')">Snacks</a>
-  <a onclick="showCategory('household')">Household</a>
+  <a>Daily Essentials</a>
+  <a>Snacks</a>
+  <a>Household</a>
 </div>
 
-<!-- FRONT PAGE -->
-<div id="home">
-  <div class="section">
-    <h2>Daily Essentials</h2>
-    <div class="row">
-      <div class="card">Atta<div class="price">₹ /</div></div>
-      <div class="card">Rice<div class="price">₹ /</div></div>
-      <div class="card">Dal<div class="price">₹ /</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Snacks</h2>
-    <div class="row">
-      <div class="card">Biscuits<div class="price">₹ /</div></div>
-      <div class="card">Namkeen<div class="price">₹ /</div></div>
-      <div class="card">Chips<div class="price">₹ /</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Household</h2>
-    <div class="row">
-      <div class="card">Detergent<div class="price">₹ /</div></div>
-      <div class="card">Soap<div class="price">₹ /</div></div>
-      <div class="card">Cleaner<div class="price">₹ /</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- CATEGORY VIEW -->
-<div id="categoryView" class="hidden">
-  <h2 id="catTitle"></h2>
-  <div class="row" id="catProducts"></div>
-</div>
-
-<!-- WHATSAPP POPUP -->
-<div id="waSheet">
-  <h3>Contact on WhatsApp</h3>
-  <a href="https://wa.me/919813205318" target="_blank">WhatsApp Anil Kumar</a>
-  <a href="https://wa.me/917015335248" target="_blank">WhatsApp Parveen Garg</a>
-  <button onclick="closeWA()">Cancel</button>
+<!-- WHATSAPP SHEET -->
+<div id="waSheet" style="position:fixed;bottom:-100%;left:0;width:100%;background:#fff;padding:20px;border-radius:20px 20px 0 0;transition:.3s">
+  <a href="https://wa.me/919813205318" style="display:block;background:#25d366;color:#fff;padding:14px;border-radius:12px;margin-bottom:10px;text-align:center">WhatsApp Anil Kumar</a>
+  <a href="https://wa.me/917015335248" style="display:block;background:#25d366;color:#fff;padding:14px;border-radius:12px;margin-bottom:10px;text-align:center">WhatsApp Parveen Garg</a>
+  <button onclick="closeWA()" style="width:100%;padding:12px">Cancel</button>
 </div>
 
 <script>
-const categoryData={
-  daily:["Atta","Rice","Dal","Oil"],
-  grains:["Wheat","Basmati Rice","Sooji","Maida"],
-  snacks:["Biscuits","Namkeen","Chips","Toast"],
-  household:["Detergent","Soap","Cleaner","Phenyl"]
-};
-
 function openMenu(){menu.style.width="260px"}
 function closeMenu(){menu.style.width="0"}
-
-function showCategory(cat){
-  closeMenu();
-  home.classList.add("hidden");
-  categoryView.classList.remove("hidden");
-  catTitle.innerText=cat.toUpperCase();
-  catProducts.innerHTML="";
-  categoryData[cat].forEach(p=>{
-    catProducts.innerHTML+=`<div class="card">${p}<div class="price">₹ /</div></div>`;
-  });
-}
-
-function openWA(){
-  document.getElementById("waSheet").style.bottom="0";
-}
-function closeWA(){
-  document.getElementById("waSheet").style.bottom="-100%";
-}
+function openWA(){waSheet.style.bottom="0"}
+function closeWA(){waSheet.style.bottom="-100%"}
 </script>
 
 </body>
