@@ -9,7 +9,7 @@
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:#f3f3f3;
+  background:#f4f4f4;
 }
 .header{
   background:#2e7d32;
@@ -17,6 +17,9 @@ body{
   padding:15px;
   display:flex;
   align-items:center;
+  position:sticky;
+  top:0;
+  z-index:5;
 }
 .menu{
   font-size:24px;
@@ -28,16 +31,17 @@ body{
   font-weight:bold;
 }
 .search-box{
-  padding:12px;
   background:#fff;
+  padding:12px;
 }
 .search-box input{
   width:100%;
-  padding:12px;
+  padding:10px;
   font-size:16px;
-  border-radius:6px;
+  border-radius:5px;
   border:1px solid #ccc;
 }
+
 .sidemenu{
   height:100%;
   width:0;
@@ -45,14 +49,15 @@ body{
   top:0;
   left:0;
   background:#fff;
+  overflow-x:hidden;
   transition:0.3s;
   padding-top:60px;
   box-shadow:2px 0 6px rgba(0,0,0,0.3);
   z-index:10;
 }
 .sidemenu a{
-  display:block;
   padding:12px 20px;
+  display:block;
   text-decoration:none;
   color:#333;
   border-bottom:1px solid #eee;
@@ -64,150 +69,110 @@ body{
   font-size:24px;
   cursor:pointer;
 }
+
 .container{
   padding:20px;
 }
 h2{
-  margin-top:35px;
   color:#2e7d32;
+  margin-top:30px;
 }
+
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:15px;
   margin-top:15px;
 }
 .card{
   background:#fff;
-  border-radius:8px;
-  overflow:hidden;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  border-radius:6px;
+  padding:12px;
   text-align:center;
-}
-.card img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-}
-.card-content{
-  padding:10px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 .price{
-  color:#555;
   font-size:14px;
+  color:#666;
   margin-top:5px;
 }
+
 .contact{
   background:#fff;
   padding:15px;
   margin-top:40px;
-  border-radius:8px;
+  border-radius:6px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <span class="menu" onclick="openMenu()">☰</span>
   <span class="title">Om Prakash Satish Kumar (Hansiwale)</span>
 </div>
 
-<!-- SEARCH -->
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
 </div>
 
-<!-- SIDE MENU -->
 <div id="menu" class="sidemenu">
   <span class="close" onclick="closeMenu()">✖</span>
   <a href="#dry">Dry Fruits</a>
   <a href="#grains">Grains & Staples</a>
   <a href="#pulses">Pulses</a>
   <a href="#spices">Spices</a>
-  <a href="#oil">Oils & Ghee</a>
-  <a href="#snacks">Snacks & Namkeen</a>
-  <a href="#beverages">Beverages</a>
+  <a href="#snacks">Snacks</a>
   <a href="#household">Household</a>
 </div>
 
 <div class="container">
-<p><b>📍 Hisar, Haryana</b></p>
-<p>Vegetarian Grocery Store • SPAR-style experience</p>
 
-<!-- DRY FRUITS -->
+<p><b>📍 Hisar, Haryana</b></p>
+
 <h2 id="dry">🥜 Dry Fruits</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1604908177522-050d4b7b8a8d"><div class="card-content"><b>Cashews (Kaju)</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1615486363973-f79d875e90b1"><div class="card-content"><b>Almonds (Badam)</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f3b"><div class="card-content"><b>Pistachio (Pista)</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"><div class="card-content"><b>Raisins (Kishmish)</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1592928302636-85f7d1e1e08a"><div class="card-content"><b>Walnuts (Akhrot)</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Cashews (Kaju)</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Almonds (Badam)</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Pistachio</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Raisins</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- GRAINS -->
 <h2 id="grains">🌾 Grains & Staples</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1586201375761-83865001e17b"><div class="card-content"><b>Wheat Atta</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76"><div class="card-content"><b>Rice</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1603052875453-c1d5ec1f34b6"><div class="card-content"><b>Basmati Rice</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1600454810973-20e8e12d6d39"><div class="card-content"><b>Maida</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea"><div class="card-content"><b>Sooji (Rava)</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Wheat Atta</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Rice</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Basmati Rice</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Sooji</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- PULSES -->
 <h2 id="pulses">🌱 Pulses</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449"><div class="card-content"><b>Toor Dal</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1615485925810-fffa9c6e6e2e"><div class="card-content"><b>Moong Dal</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1620207418302-439b387441b0"><div class="card-content"><b>Masoor Dal</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1592924357231-7c4c08e94a70"><div class="card-content"><b>Chana Dal</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1625246333644-8c78e9ef3c8a"><div class="card-content"><b>Rajma</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Toor Dal</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Moong Dal</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Chana Dal</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- SPICES -->
 <h2 id="spices">🌶 Spices</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d"><div class="card-content"><b>Turmeric (Haldi)</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1604908554166-4a7b6f53fa92"><div class="card-content"><b>Red Chilli Powder</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1625944525533-473f1a6d4db1"><div class="card-content"><b>Coriander Powder</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1592924357265-3f7b92e68e45"><div class="card-content"><b>Garam Masala</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Haldi</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Mirch</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Dhaniya</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- OIL -->
-<h2 id="oil">🛢 Oils & Ghee</h2>
+<h2 id="snacks">🍿 Snacks</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"><div class="card-content"><b>Mustard Oil</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f"><div class="card-content"><b>Refined Oil</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1615484477774-22333e1657e4"><div class="card-content"><b>Desi Ghee</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Bhujia</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Biscuits</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- SNACKS -->
-<h2 id="snacks">🍿 Snacks & Namkeen</h2>
+<h2 id="household">🧹 Household</h2>
 <div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087"><div class="card-content"><b>Bhujia</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1617196030705-40b4c03a13d6"><div class="card-content"><b>Mixture</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1625944074429-43e3d0c56c33"><div class="card-content"><b>Biscuits</b><div class="price">Price: /</div></div></div>
+  <div class="card product"><b>Detergent</b><div class="price">Price: /</div></div>
+  <div class="card product"><b>Dishwash Bar</b><div class="price">Price: /</div></div>
 </div>
 
-<!-- BEVERAGES -->
-<h2 id="beverages">🥤 Beverages</h2>
-<div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1622483859158-79e27f6fa7d8"><div class="card-content"><b>Tea</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1592924357218-1c3f66a9cfe6"><div class="card-content"><b>Coffee</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1590080875861-77f4bdb2f1e3"><div class="card-content"><b>Soft Drinks</b><div class="price">Price: /</div></div></div>
-</div>
-
-<!-- HOUSEHOLD -->
-<h2 id="household">🧹 Household Items</h2>
-<div class="grid">
-<div class="card product"><img src="https://images.unsplash.com/photo-1581579186988-3c0f2f9c92a3"><div class="card-content"><b>Detergent</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6"><div class="card-content"><b>Dishwash Bar</b><div class="price">Price: /</div></div></div>
-<div class="card product"><img src="https://images.unsplash.com/photo-1615484477774-22333e1657e4"><div class="card-content"><b>Floor Cleaner</b><div class="price">Price: /</div></div></div>
-</div>
-
-<!-- CONTACT -->
 <div class="contact">
 <h3>📞 Contact</h3>
 <p><b>Anil Kumar</b> – 9813205318</p>
@@ -229,3 +194,4 @@ products[i].style.display=products[i].innerText.toLowerCase().includes(input)?"b
 
 </body>
 </html>
+
