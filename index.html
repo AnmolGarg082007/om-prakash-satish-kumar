@@ -9,46 +9,93 @@
 body{
   margin:0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background:#f5f5f5;
+  background:#f4f4f4;
 }
 
 /* HEADER */
 .header{
   background:#2e7d32;
   color:#fff;
-  padding:20px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.menu{
+  font-size:26px;
+  cursor:pointer;
 }
 .title{
-  font-size:26px;
+  font-size:24px;
   font-weight:800;
 }
 .subtitle{
-  font-size:14px;
+  font-size:13px;
   opacity:0.9;
 }
 
-/* ACTION BAR */
-.action-bar{
+/* ACTION BUTTONS */
+.actions{
   display:flex;
   gap:10px;
   padding:12px;
   background:#fff;
 }
-.action-bar a{
+.actions a{
   flex:1;
   text-align:center;
-  padding:10px;
+  padding:12px;
+  border-radius:8px;
+  font-weight:700;
+  text-decoration:none;
+}
+.call{
+  background:#e8f5e9;
+  color:#2e7d32;
+}
+.whatsapp{
+  background:#25d366;
+  color:#fff;
+}
+.location{
+  background:#f1f1f1;
+  color:#333;
+}
+
+/* SIDE MENU */
+.sidemenu{
+  height:100%;
+  width:0;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#fff;
+  overflow-x:hidden;
+  transition:0.3s;
+  padding-top:60px;
+  box-shadow:2px 0 6px rgba(0,0,0,0.3);
+  z-index:10;
+}
+.sidemenu a{
+  display:block;
+  padding:14px 22px;
   text-decoration:none;
   font-weight:600;
-  border-radius:6px;
-  color:#2e7d32;
-  border:1px solid #2e7d32;
+  color:#333;
+  border-bottom:1px solid #eee;
+}
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:24px;
+  cursor:pointer;
 }
 
 /* SEARCH */
 .search-box{
-  padding:12px;
   background:#fff;
+  padding:12px;
 }
 .search-box input{
   width:100%;
@@ -58,32 +105,10 @@ body{
   border:1px solid #ccc;
 }
 
-/* CONTAINER */
+/* CONTENT */
 .container{
   padding:20px;
 }
-
-/* CATEGORIES */
-.categories{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:15px;
-}
-.cat-card{
-  background:#fff;
-  padding:25px;
-  text-align:center;
-  font-weight:700;
-  font-size:18px;
-  border-radius:10px;
-  cursor:pointer;
-  box-shadow:0 3px 6px rgba(0,0,0,0.1);
-}
-.cat-card:hover{
-  background:#e8f5e9;
-}
-
-/* PRODUCTS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -97,12 +122,10 @@ body{
   box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 .price{
-  margin-top:6px;
   font-size:14px;
   color:#666;
+  margin-top:6px;
 }
-
-.hidden{display:none}
 
 /* CONTACT */
 .contact{
@@ -118,41 +141,40 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="title">Om Prakash Satish Kumar</div>
-  <div class="subtitle">(Hansiwale) • Hisar, Haryana</div>
-</div>
-
-<!-- ACTIONS -->
-<div class="action-bar">
-  <a href="tel:9813205318">📞 Call</a>
-  <a href="https://wa.me/919813205318" target="_blank">💬 WhatsApp</a>
-  <a href="https://maps.google.com/?q=Hisar,Haryana" target="_blank">📍 Location</a>
-</div>
-
-<!-- SEARCH -->
-<div class="search-box hidden" id="searchBox">
-  <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
-</div>
-
-<!-- HOME: CATEGORIES -->
-<div class="container" id="home">
-  <div class="categories">
-    <div class="cat-card" onclick="openCategory('dry')">Dry Fruits</div>
-    <div class="cat-card" onclick="openCategory('grains')">Grains & Staples</div>
-    <div class="cat-card" onclick="openCategory('pulses')">Pulses</div>
-    <div class="cat-card" onclick="openCategory('spices')">Spices</div>
-    <div class="cat-card" onclick="openCategory('snacks')">Snacks</div>
-    <div class="cat-card" onclick="openCategory('household')">Household</div>
+  <span class="menu" onclick="openMenu()">☰</span>
+  <div>
+    <div class="title">Om Prakash Satish Kumar</div>
+    <div class="subtitle">(Hansiwale) • Hisar, Haryana</div>
   </div>
 </div>
 
+<!-- ACTIONS -->
+<div class="actions">
+  <a class="call" href="tel:9813205318">📞 Call</a>
+  <a class="whatsapp" href="https://wa.me/919813205318" target="_blank">💬 WhatsApp</a>
+  <a class="location" href="https://maps.google.com/?q=Hisar,Haryana" target="_blank">📍 Location</a>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+</div>
+
+<!-- SIDE MENU (CATEGORIES) -->
+<div id="menu" class="sidemenu">
+  <span class="close" onclick="closeMenu()">✖</span>
+  <a onclick="loadCategory('dry')">Dry Fruits</a>
+  <a onclick="loadCategory('grains')">Grains & Staples</a>
+  <a onclick="loadCategory('pulses')">Pulses</a>
+  <a onclick="loadCategory('spices')">Spices</a>
+  <a onclick="loadCategory('snacks')">Snacks</a>
+  <a onclick="loadCategory('household')">Household</a>
+</div>
+
 <!-- PRODUCTS -->
-<div class="container hidden" id="products">
-
-  <h2 id="catTitle"></h2>
-
+<div class="container">
+  <h2 id="categoryTitle">Select a category ☰</h2>
   <div class="grid" id="productGrid"></div>
-
 </div>
 
 <!-- CONTACT -->
@@ -172,12 +194,12 @@ const data={
   household:["Detergent","Dishwash Bar","Floor Cleaner"]
 };
 
-function openCategory(cat){
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("products").classList.remove("hidden");
-  document.getElementById("searchBox").classList.remove("hidden");
+function openMenu(){document.getElementById("menu").style.width="260px";}
+function closeMenu(){document.getElementById("menu").style.width="0";}
 
-  document.getElementById("catTitle").innerText=cat.toUpperCase();
+function loadCategory(cat){
+  closeMenu();
+  document.getElementById("categoryTitle").innerText=cat.toUpperCase();
   let grid=document.getElementById("productGrid");
   grid.innerHTML="";
   data[cat].forEach(item=>{
@@ -195,3 +217,4 @@ function searchProducts(){
 
 </body>
 </html>
+
